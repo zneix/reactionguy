@@ -2,7 +2,7 @@ const discord = require('discord.js');
 const {prefix, token, botver, uidTEST, uidKD} = require('./config.json'); //global constants
 const {upvoteTEST, downvoteTEST, upvoteKD, downvoteKD} = require('./config-emoji.json'); //configure emojis ID's here
 const bot = new discord.Client();
-bot.login(token); //client login to discord server
+bot.login(process.env.token); //client login to discord server
 
 //once bot is ready, it executes code below
 bot.once('ready', () => {
