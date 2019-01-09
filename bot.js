@@ -2,7 +2,7 @@ const discord = require('discord.js');
 const {prefix, token, botver, uidTEST, uidKD} = require('./config.json'); //global constants
 const {upvoteTEST, downvoteTEST, upvoteKD, downvoteKD} = require('./config-emoji.json'); //configure emojis ID's here
 const bot = new discord.Client();
-bot.login(process.env.token); //client login to discord server
+bot.login(token); //client login to discord server
 
 //once bot is ready, it executes code below
 bot.once('ready', () => {
@@ -13,7 +13,7 @@ bot.once('ready', () => {
 //on every message sent, bot will filter them and try to react to messages starting with prefix
 bot.on('message', message =>  {
     const messageInLowercase = message.content.toLowerCase();
-    if (!messageInLowercase.startsWith(prefix) || message.channel.id !== uidTEST) {
+    if (!message.content.includes(prefix) || message.channel.id !== uidTEST) {
         return null; //exits early if message don't start with #propozycje
     } else {
         message.react(upvoteTEST)
